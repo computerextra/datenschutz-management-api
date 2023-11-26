@@ -6,6 +6,30 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
+}
+
+model User {
+  id     String  @id @default(cuid())
+  name   String?
+  mail   String?
+  role   Role    @relation(fields: [roleId], references: [id])
+  roleId String
+}
+
+model Role {
+  id   String @id @default(cuid())
+  name String
+  User User[]
+}
+
+model AVV {
+  id             String    @id @default(cuid())
+  kundenummer    String
+  kundenname     String
+  freigegeben    Boolean   @default(false)
+  angelegt_am    DateTime
+  freigegeben_am DateTime?
+  vertrag        String
 }
