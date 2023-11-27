@@ -6,6 +6,7 @@ yarn-debug.log*
 yarn-error-log*
 
 dev.db
+dev.db.journal
 
 # Runtime data
 pids
@@ -43,3 +44,4 @@ typings/
 .vuepress/dist
 .serverless
 dist
+prisma/dev.db-journal

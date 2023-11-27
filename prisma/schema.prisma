@@ -29,7 +29,8 @@ model AVV {
   kundenummer    String
   kundenname     String
   freigegeben    Boolean   @default(false)
-  angelegt_am    DateTime
+  angelegt_am    DateTime  @default(now())
   freigegeben_am DateTime?
   vertrag        String
+  kommentar      String?
 }
