@@ -8,7 +8,7 @@ export async function createAvv(input: {
   return db.aVV.create({
     data: {
       kundenname: input.kundenname,
-      kundenummer: input.kundennummer,
+      kundennummer: input.kundennummer,
       vertrag: input.vertrag,
     },
   });

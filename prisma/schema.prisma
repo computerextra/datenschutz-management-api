@@ -26,7 +26,7 @@ model Role {
 
 model AVV {
   id             String    @id @default(cuid())
-  kundenummer    String
+  kundennummer   String
   kundenname     String
   freigegeben    Boolean   @default(false)
   angelegt_am    DateTime  @default(now())
