@@ -1,3 +1,4 @@
+import { User } from "@prisma/client";
 import express, { Request } from "express";
 import db from "../db";
 import MessageResponse from "../interfaces/MessageResponse";
@@ -37,7 +38,13 @@ router.post<{}, MessageResponse>("/", async (req: AuthRequest<{ id: string; toke
   }
 });
 
-router.post<{}, AuthResponse>("/signIn", async (req: AuthRequest<AuthProps>, res) => {
+router.post<
+  {},
+  {
+    message?: string | undefined;
+    user?: User | undefined;
+  }
+>("/signIn", async (req: AuthRequest<AuthProps>, res) => {
   const mail = req.body.mail;
   const pass = req.body.password;
   try {
@@ -55,7 +62,7 @@ router.post<{}, AuthResponse>("/signIn", async (req: AuthRequest<AuthProps>, res
 
     if (User?.password === pass) {
       res.json({
-        message: User.token,
+        user: User,
       });
     }
   } catch (err) {
