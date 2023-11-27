@@ -15,14 +15,12 @@ export async function getAllUsers() {
   return await db.user.findMany();
 }
 
-export async function createUser(input: {
-  name: string;
-  mail: string | undefined;
-}) {
+export async function createUser(input: { name: string; mail: string | undefined; password: string | undefined }) {
   return await db.user.create({
     data: {
       name: input.name,
       mail: input.mail,
+      password: input.password,
       role: {
         create: {
           name: "Gast",
@@ -32,11 +30,7 @@ export async function createUser(input: {
   });
 }
 
-export async function updateUser(input: {
-  id: string;
-  name: string;
-  mail: string | undefined;
-}) {
+export async function updateUser(input: { id: string; name: string; mail: string | undefined }) {
   return await db.user.update({
     where: {
       id: input.id,
@@ -48,10 +42,7 @@ export async function updateUser(input: {
   });
 }
 
-export async function updateUserRole(input: {
-  userId: string;
-  roleId: string;
-}) {
+export async function updateUserRole(input: { userId: string; roleId: string }) {
   return await db.user.update({
     where: {
       id: input.userId,
