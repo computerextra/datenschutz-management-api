@@ -15,7 +15,7 @@ interface AuthRequest<T> extends Request {
   body: T;
 }
 
-router.get<{}, MessageResponse>("/", async (req: AuthRequest<{ id: string; token: string }>, res) => {
+router.post<{}, MessageResponse>("/", async (req: AuthRequest<{ id: string; token: string }>, res) => {
   const id = req.body.id;
   const token = req.body.token;
 
