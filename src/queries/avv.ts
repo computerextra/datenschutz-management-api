@@ -1,10 +1,6 @@
 import db from "../db";
 
-export async function createAvv(input: {
-  kundennummer: string;
-  kundenname: string;
-  vertrag: string;
-}) {
+export async function createAvv(input: { kundennummer: string; kundenname: string; vertrag: string }) {
   return db.aVV.create({
     data: {
       kundenname: input.kundenname,
@@ -26,7 +22,7 @@ export async function getAllAvv() {
   return await db.aVV.findMany({
     select: {
       id: true,
-      kundenummer: true,
+      kundennummer: true,
       kundenname: true,
       kommentar: true,
       freigegeben: true,
@@ -34,19 +30,14 @@ export async function getAllAvv() {
   });
 }
 
-export async function updateAvv(input: {
-  id: string;
-  kundennummer: string;
-  kundenname: string;
-  vertrag: string;
-}) {
+export async function updateAvv(input: { id: string; kundennummer: string; kundenname: string; vertrag: string }) {
   return await db.aVV.update({
     where: {
       id: input.id,
     },
     data: {
       kundenname: input.kundenname,
-      kundenummer: input.kundennummer,
+      kundennummer: input.kundennummer,
       vertrag: input.vertrag,
       freigegeben: false,
       freigegeben_am: undefined,
