@@ -22,7 +22,7 @@ export async function createUser(input: {
   return await db.user.create({
     data: {
       name: input.name,
-      mail: input.name,
+      mail: input.mail,
       role: {
         create: {
           name: "Gast",
