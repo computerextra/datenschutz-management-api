@@ -53,16 +53,20 @@ router.post<
         mail: mail,
       },
     });
-
     if (User == null) {
       res.json({
         message: "No User Found",
       });
+      return;
     }
 
-    if (User?.password === pass) {
+    if (User.password === pass) {
       res.json({
         user: User,
+      });
+    } else {
+      res.json({
+        message: "Wrong Password",
       });
     }
   } catch (err) {
