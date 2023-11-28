@@ -11,18 +11,18 @@ datasource db {
 }
 
 model User {
-  id       String  @id @default(cuid())
-  name     String?
-  mail     String?
-  password String?
-  role     Role    @relation(fields: [roleId], references: [id])
+  id       String @id @default(cuid())
+  name     String
+  mail     String @unique
+  password String
+  role     Role   @relation(fields: [roleId], references: [id])
   roleId   String
-  token    String  @default(cuid())
+  token    String @default(cuid())
 }
 
 model Role {
   id   String @id @default(cuid())
-  name String
+  name String @unique
   User User[]
 }
 

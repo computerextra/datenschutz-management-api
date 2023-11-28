@@ -40,8 +40,8 @@ router.get<{ id: string }, UserResponse>("/:id", async (req, res) => {
 
 interface UserProps {
   name: string;
-  mail: string | undefined;
-  password: string | undefined;
+  mail: string;
+  password: string;
 }
 
 interface UserReq<T> extends Request {
