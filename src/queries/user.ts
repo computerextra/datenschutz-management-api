@@ -12,7 +12,11 @@ export async function getUser(input: { id: string }) {
 }
 
 export async function getAllUsers() {
-  return await db.user.findMany();
+  return await db.user.findMany({
+    include: {
+      role: true
+    }
+  });
 }
 
 export async function createUser(input: { name: string; mail: string; password: string }) {

@@ -11,5 +11,5 @@ type UserWithRole =
   | null;
 
 export default interface UserResponse extends MessageResponse {
-  user: UserWithRole | User | User[] | null;
+  user: UserWithRole | UserWithRole[] | User | User[] | null;
 }
